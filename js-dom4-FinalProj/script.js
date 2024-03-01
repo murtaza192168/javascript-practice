@@ -26,27 +26,33 @@ const addItem = (e) => {
     
     li.appendChild(removeBtn)
     itemList.appendChild(li)
-
+    
+    //As soon as as I press submit, the value entered in textBox must vanish
+    
+    
     // Delete that list item when I click tha button
     }
-   
-
+    
+    
+  
 }
  form.addEventListener('submit', addItem)
 
-  // Delete that list item when I click tha button
+  // Delete that list item when I click that button
   const removeItem = (e) => {
+    // console.log(e.target);
     if(e.target.classList.contains('delete'))
     {
         if(confirm('Are you sure?')) // if yes then go inside if
         {
         
             //itemList is the ParentElement of li
-            const li = e.target.parentElement
+            const li = e.target.parentElement // li is the parent element of button(target)
             itemList.removeChild(li)
             
         }
     }
+
   } 
   itemList.addEventListener('click', removeItem)
 
@@ -79,3 +85,12 @@ const filter_It = (e) =>{
 }
 
 filterItems.addEventListener('keyup', filter_It)
+
+// Save the information Locally
+// function saveData(){
+//     localStorage.setItem("data", itemList.innerHTML);
+// }
+// //Display existing and new tasks added whenever we refresh or open the browser in local storage
+// function showData(){
+//     itemList.innerHTML = localStorage.getItem("data");
+// }
