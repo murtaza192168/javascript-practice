@@ -14,59 +14,60 @@ const companies= [
 
   // forEach-----------------------------------
     // simple forLoop
-    // for (let i = 0; i<companies.length; i++){
+    for (let i = 0; i<companies.length; i++){
     //     console.log(companies[i]);
-    // }
+    }
     
     // using forEach 
-    // companies.forEach((company, index) => {
-    //     console.log(company);
-    // })
+    companies.forEach((company, index) => {
+        // console.log(company);
+    })
 
 
   //filter--------------------------------------
     // This method will return a new array from the existing/original array based on the condition passed
 
      // using simple forLoop
-    //  const canParticipate = []
-    //   for(let i=0; i<ages.length;i++){
-    //     if(ages[i] > 21){
-    //         canParticipate.push(ages[i])
-    //     }
-    // }console.log(canParticipate);
+     const canParticipate = []
+      for(let i=0; i<ages.length;i++){
+        if(ages[i] > 21){
+            canParticipate.push(ages[i])
+        }
+    }
+    // console.log(canParticipate);
      
     // using filter method
-    // const filteredData = ages.filter((age) => {
-    //     if(age > 21){
-    //         return true 
-    //     }
-    // })
+    const filteredData = ages.filter((age) => {
+        if(age > 21){
+            return true 
+        }
+    })
     // console.log(filteredData); 
 
     // oneLiner
-      const filteredData = ages.filter(age => age >= 21) // shorthand
-      console.log(filteredData); 
+      const filteredList = ages.filter(age => age >= 21) // shorthand
+    //   console.log(filteredList); 
       
       // filter the companies that are retail category
-    //   const retailCompanies = companies.filter(company =>{
-    //     if(company.category === 'Retail'){
-    //         return true
-    //     }
-    //   })
+      const retailCompanies = companies.filter(company =>{
+        if(company.category === 'Retail'){
+            return true
+        }
+      })
     //   console.log(retailCompanies);
       
      // short hand
-    //    const retailCompanies = companies.filter(company => (company.category === 'Retail'))
-    //    console.log(retailCompanies);
+       const retailComp = companies.filter(company => (company.category === 'Retail'))
+    //    console.log(retailComp);
 
      // Get the companies established in 80s
-    //  const eightiesCompanies = companies.filter(company => company.start >= (1980) && company.start <(1990))  
+     const eightiesCompanies = companies.filter(company => company.start >= (1980) && company.start <(1990))  
     //  console.log(eightiesCompanies);
 
       // Get  the companies that lasted for 10 years
-    //   const lasted10Years = companies.filter(company => {if((company.end - company.start) >= 10){
-    //     return true
-    //   }})
+      const lasted10Years = companies.filter(company => {if((company.end - company.start) >= 10){
+        return true
+      }})
     //   console.log(lasted10Years);
       
 
@@ -74,14 +75,14 @@ const companies= [
       // creating new array from existing array
     // Q1) extract company names from companies array\
 
-    //   const companyNames = companies.map(company => company.name) 
+      const companyNames = companies.map(company => company.name) 
     //   console.log(companyNames);
 
     // edit the new array with start and end years beside it
-    const companyNames = companies.map(company => {
+    const companyNamess = companies.map(company => {
         return ( `${company.name}, [${company.start} - ${company.end}]`)
     }) 
-    console.log(companyNames);
+    // console.log(companyNamess);
 
     // take out the new array with ageSquare from ages array
     // const ageSquare = ages.map(age =>  age*age)
@@ -89,26 +90,26 @@ const companies= [
     
     // ages squareRoot
     const ageSquare = ages.map(age => Math.sqrt(age))
-    console.log(ageSquare);
+    // console.log(ageSquare);
 
 
       
   //sort-------------------------------------------------
     // Sort by company start date in ascending order ..ok
-    // const sortCompanyStartDate = companies.sort((company1, company2) => 
-    //     company1.start < company2.start ? -1 : 1
+    const sortCompanyStartDate = companies.sort((company1, company2) => 
+        company1.start < company2.start ? -1 : 1
     //     // first element : -1  --- means that first element should come before second element (1) and visa versa..
 
-    //  )
+     )
     // console.log(sortCompanyStartDate);
 
     // sort ages in ascending order
-    // const ageSort = ages.sort() // if you code like only this much, then it will only consider the first digit in sorting... see, even though 5 is the smallest, it has been placed at the 4th last pos
+    const ageSort = ages.sort() // if you code like only this much, then it will only consider the first digit in sorting... see, even though 5 is the smallest, it has been placed at the 4th last pos
     // console.log(ageSort); 
 
     // sort in a better way
-    // const ageSort = ages.sort((a1, a2) => (a1 - a2))
-    // console.log(ageSort);
+    const agesort = ages.sort((a1, a2) => (a1 - a2))
+    // console.log(agesort);
 
 
 
@@ -122,7 +123,7 @@ const companies= [
           
          // using reduce func
          const ageTotal = ages.reduce((total, age) =>{ return total + age}, 0)
-         console.log(ageTotal);  
+        //  console.log(ageTotal);  
 
 
     //Q2] Get all the companies span and sum it up (Get total years worked for all companies)
@@ -132,4 +133,4 @@ const companies= [
 
     const totalYearsOfAllCompanies = companies.reduce((total, company) => {return total + (company.end - company.start)
     }, 0)
-    console.log(totalYearsOfAllCompanies);
+    // console.log(totalYearsOfAllCompanies);
