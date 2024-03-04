@@ -9,6 +9,7 @@
     <h2>XHR - XMLHttpRequest-Part1 (open, load, send)</h2>
 
     <button id="btn">Obtain Text File</button>
+    <div class="text"></div>
 
 <script>
 const getButton = document.querySelector('#btn')
@@ -16,22 +17,52 @@ const getButton = document.querySelector('#btn')
 
 const receiveData = () => {
     // create XHR object
-    const xhr = new XMLHttpRequest()
-    console.log(xhr);
+    var xhr = new XMLHttpRequest()
+    // console.log(xhr);
     //perform operations on this object which can be called via 'this' keyword as it points to teh current object
 
     // open file
     xhr.open('GET', 'sampleTextData-1.txt', true) // xhr.open('type-of-request', 'Source-of-request', 'boolean value')
 
     // load a file with implementing a function
-    xhr.onload = () => {
+    console.log('READY STATE', xhr.readyState); //1
+    xhr.onload = function() {
         // check the status: 200 - Ok
                          // 400 - Forbidden
                          // 404 - Not found
+        console.log('READY STATE', xhr.readyState); // 4: bcz onload is not going to run unless its ready...
         if(this.status == 200){
-            console.log(this.response);
+            // console.log('READY STATE', xhr.readyState);
+            // console.log(this.responseText); // 4
+            document.querySelector('.text').innerHTML = this.responseText
+            document.querySelector('#btn').textContent = 'Response Received'
+        }
+        else if(this.status == 404){
+            document.querySelector('.text').innerHTML = 'File Not Found'
+            document.querySelector('#btn').innerHTML = 'Try Again!'
         }
     }
+
+    // readyState: onreadystatechange: old way of checking status of the data
+    // - onreadystatechange: 
+    //                       - readyState values: 0: request not initialised
+    //                                            1: server connection established
+    //                                            2: request received
+    //                                            3: processing request
+    //                                            4: request finished, response ready
+    //  xhr.onreadystatechange = function(){
+    //     console.log('READY STATE', xhr.readyState);
+    //     if(this.readyState == 4 && this.status == 200){
+    //         // console.log(this.responseText);
+    //     }
+    //  }
+
+   // onprogress : show the progress of the request
+   xhr.onprogress = function(){
+    console.log('READY STATE:', xhr.readyState); // 3: processing request
+   }
+
+    // sends request
     xhr.send()
 }
 getButton.addEventListener('click', receiveData)
