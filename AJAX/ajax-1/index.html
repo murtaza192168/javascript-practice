@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working with AJAX part-1</title>
+</head>
+<body>
+    <h2>XHR - XMLHttpRequest-Part1 (open, load, send)</h2>
+
+    <button id="btn">Obtain Text File</button>
+
+<script>
+const getButton = document.querySelector('#btn')
+
+
+const receiveData = () => {
+    // create XHR object
+    const xhr = new XMLHttpRequest()
+    console.log(xhr);
+    //perform operations on this object which can be called via 'this' keyword as it points to teh current object
+
+    // open file
+    xhr.open('GET', 'sampleTextData-1.txt', true) // xhr.open('type-of-request', 'Source-of-request', 'boolean value')
+
+    // load a file with implementing a function
+    xhr.onload = () => {
+        // check the status: 200 - Ok
+                         // 400 - Forbidden
+                         // 404 - Not found
+        if(this.status == 200){
+            console.log(this.response);
+        }
+    }
+    xhr.send()
+}
+getButton.addEventListener('click', receiveData)
+
+</script>
+</body>
+</html>
