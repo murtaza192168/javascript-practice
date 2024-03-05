@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Working with AJAX (LOCAL JSON)</title>
+</head>
+<body>
+    <h1>Working with LOCAL JSON DATA</h1>
+    <br><br><br>
+
+    <button id="btn-1">Get User</button>
+    <button id="btn-2">Get Users</button>
+    <br><br>
+    <h2>User</h2>
+    <div class="user"></div>
+    <br>
+    <h2>Users</h2>
+    <div class="users"></div>
+
+    <script>
+
+       
+        
+//************************************ FOR A USER*************************
+ const getUserBtn = document.querySelector('#btn-1')
+        const loadUser = () => {
+            //create xhr object to perform operations and methods on data
+            const xhr = new XMLHttpRequest()
+
+            // open
+            xhr.open('GET', 'user.json', true)
+            // onload and run function on it
+            console.log('READY STATE:', xhr.readyState); //1
+            xhr.onload = function(){
+                console.log('READY STATE:', xhr.readyState); //4
+                if(this.status == 200){
+                    // console.log(this.responseText);
+                   const user = JSON.parse(this.responseText)
+                //    console.log(user.name);
+
+                // put this in innerHTML
+                //for a single user **************
+                 let seenOnWebPage = ''
+                 seenOnWebPage += `<ul>
+                                         <li>ID: ${user.id}</li>
+                                         <li>Name: ${user.name}</li>
+                                         <li>Email Id: ${user.email}</li>
+                                       </ul>`
+                document.querySelector('.user').innerHTML = seenOnWebPage    
+
+                }else if(this.status == 404){console.log("Something went Wrong!");}
+            }
+            // send request now
+            xhr.send()
+        }
+        getUserBtn.addEventListener('click', loadUser)
+
+
+        //************************************ FOR MULTIPLE USERS*************************
+         const getUsersBtn = document.querySelector('#btn-2')
+
+        const loadUsers = () => {
+            //create xhr object to perform operations and methods on data
+            const xhr = new XMLHttpRequest()
+
+            // open
+            xhr.open('GET', 'users.json', true)
+
+            console.log('READY STATE: ', xhr.readyState);
+            xhr.onload = function(){
+                console.log('READY STATE: ', xhr.readyState);
+                if(this.status == 200){
+                    const usersData = JSON.parse(this.responseText)
+                    // console.log(usersData[2].name)
+                    let list = ''
+                    usersData.forEach((userData) => {
+                        // console.log(userData);
+                        // display this data on web page
+                        list += `<ul>
+                             <li>ID: ${userData.id}</li>
+                             <li>Name: ${userData.name}</li>
+                             <li>Email Id: ${userData.email}</li>
+                             </ul>`
+                    })
+                    document.querySelector('.users').innerHTML = list
+                }else if( this.status == 404){console.log('File Not Found');}
+            }
+            // send request
+            xhr.send()
+
+        } 
+        getUsersBtn.addEventListener('click', loadUsers)
+
+    </script>
+</body>
+</html>
