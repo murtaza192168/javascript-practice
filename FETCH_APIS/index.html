@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch APIs</title>
+</head>
+<body>
+    <button id="getText-btn">Get Text</button>
+
+    <script>
+        
+        const getText = () => {
+            // fetch text file first
+            fetch('sample.txt')
+            // if its fetched then it will return a promise
+            .then((res) => { // res means response of that fetched file
+                // res.text() will print the whole promise with properties in json format
+                // console.log(res.text());
+                return (res.text()) // along with this return, I need add one more promise for printing only the text
+            }).then((data) => {
+                console.log(data);
+            })
+        }
+        document.querySelector('#getText-btn').addEventListener('click', getText)
+
+    </script>
+</body>
+</html>
