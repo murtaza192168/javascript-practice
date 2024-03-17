@@ -1,0 +1,21 @@
+              // What is React
+- React is a library and a JS framework for building user Interfaces
+-React runs on a client / browser as a SPA(single page app), but can do full stack applications by communicating with server / applications eg. MERN stack
+
+
+            // Why use REACT ?
+            1) Structure view layer of an application
+- Since MVC-Model View Conroller is a dessign pattern for software. 
+    M: model deals with th data
+    V: view is the part of the application that the user sees. And React is the V in MVC
+    C: Controller deals witht the requests & routing\
+            2) Reusable component and their own state
+- React allows you to build the UI using REUSABLE COMPONENTS
+  , so every part of the user interface has a DYNAMIC COMPONENT that can hold its own state and data
+            
+            3) JSX - Dynamic Markup 
+- Here you dont have to SEPARATE your markup from the Logic (like javascript) bcz react uses JSX: JavaScript Syntax Exetension.
+   and this allows us to write Dynamic HTML. Its JS.. but it is formatted as HTML
+            4) Interactive UIs with virtual DOM
+- Now the app that you build with React, are very Interactive bcz it uses VIRTUAL DOM.
+ Virtual DOM: what this does is it allows you to update the parts of the page that needs to be updated, without a need to reload it              
