@@ -75,10 +75,10 @@ console.log(newDiv);
 // // assign a container and an element inside it to place my newDiv bfr/aftr that element
 // const mainDiv = document.querySelector('#main')
 // console.log(mainDiv); 
-// const heading2 = document.querySelector('h2 .title') // not working but ok learned it
+// const heading2 = document.querySelector('h2 .title') // worked
 
 // // Final Placing
-//  mainDiv.insertBefore('newDiv','heading2')
+ mainDiv.appendChild('newDiv') mainDiv.insertBefore('newDiv','heading2')
 /////////////////////////////////////////////////////////////////////////////////////
 
 
